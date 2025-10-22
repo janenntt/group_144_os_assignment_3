@@ -1,21 +1,29 @@
-README.template
+## Parallel Merge Sort
 
-## Project Number/Title 
+* Authors:
+  - Ngoc Thuy Tram Nguyen
+  - Thi Phuong Thao Truong
+  - Omar Mahmood Humaid Abdulla Alhammadi
 
-* Authors: Your Name, and your group members’ names
-* Group name: Your Group Name
+* Group name: Group 144
 
 ## Overview
 
-Concisely explain what the program does. If this exceeds a couple of
-sentences, you're going too far. Generally, you should be pulling this
-right from the project specification. We don't want you to just cut and
-paste, but paraphrase what is stated in the project specification.
+This project implements a parallel merge sort algorithm using the POSIX Threads (pthreads) library in C.
+The program demonstrates how the traditional divide-and-conquer merge sort can be parallelised to improve performance on multi-core systems.
+
+Instead of recursively sorting subarrays in a single thread, the program creates new threads at each recursive level (up to a user-defined cutoff) to sort smaller subarrays concurrently. When the cutoff level is reached, the algorithm switches back to a serial merge sort. This approach significantly reduces sorting time by utilising multiple CPU cores efficiently.
 
 ## Manifest
 
-A listing of source files and other non-generated files, and a brief
-(one-line) explanation of the purpose of each file.
+| File Name            | Description                                                                                                                            |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| **mergesort.c**      | Implements the serial and parallel merge sort functions (`mergesort`, `merge`, `parallel_mergesort`, `buildArgs`).                     |
+| **mergesort.h**      | Contains global variable and struct definitions (`A`, `B`, `cutoff`, and `struct argument`). **Must not be modified.**                 |
+| **test-mergesort.c** | Testing program that generates random arrays and measures sorting time. Takes 3 parameters: array size, cutoff level, and random seed. |
+| **Makefile**         | Automates the build process for compiling the merge sort and testing program.                                                          |
+| **README.md**        | Documentation file explaining project overview, usage, testing, and reflections.                                                       |
+
 
 ## Building the project
 
@@ -51,7 +59,7 @@ did the development and testing process go for you?
 
 ## Sources Used
 
-If you used any sources outside of the textbook, you should list them here. 
-If you looked something up on stackoverflow.com or you use help from AI, and 
-fail to cite it in this section, it will be considered plagiarism and dealt 
+If you used any sources outside of the textbook, you should list them here.
+If you looked something up on stackoverflow.com or you use help from AI, and
+fail to cite it in this section, it will be considered plagiarism and dealt
 with accordingly. So be safe CITE!

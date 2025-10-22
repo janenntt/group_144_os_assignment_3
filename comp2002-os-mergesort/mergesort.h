@@ -14,8 +14,8 @@ struct argument {
 	int level;
 };
 
-/* it's not like we want arg to be a void type pointer, 
- * it's just that pthread_create() assumes the thread 
+/* it's not like we want arg to be a void type pointer,
+ * it's just that pthread_create() assumes the thread
  * function takes a void type pointer as its parameter. */
 void * parallel_mergesort(void *arg);
 struct argument * buildArgs(int left, int right, int level);
