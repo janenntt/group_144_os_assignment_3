@@ -27,15 +27,32 @@ Instead of recursively sorting subarrays in a single thread, the program creates
 
 ## Building the project
 
-This section should tell the user how to build your code.  If you are
-delivering a library, where does it need to be installed, or how do you use
-it? Is this an executable, if so, how can a user get up to speed as fast as
-possible?
+To compile the project, navigate to the project directory and run:
+```bash
+make
+```
+This will generate an executable file called `test-mergesort`
+
+To run the program, run:
+```bash
+./test-mergesort <input size> <cutoff level> <seed>
+```
+
+Example:
+```bash
+./test-mergesort 100000000 3 1234
+```
+This command sorts 100 million randomly generated integers using parallel merge sort up to level 3 with a seed of `1234`.
+
 
 ## Features and usage
 
-Summarise the main features of your program. It is also appropriate to
-instruct the user how to use your program.
+**Main Features**
+* **Serial merge sort (cutoff = 0):** Standard single-threaded merge sort.
+* **Parallel merge sort (cutoff ≥ 1):** Spawns new threads recursively to handle left and right subarrays concurrently.
+* **Dynamic thread control:** Thread creation stops at the specified cutoff level to prevent excessive thread overhead.
+* **Performance reporting:** Automatically measures and displays sorting time for each configuration.
+
 
 ## Testing
 
