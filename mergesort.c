@@ -19,7 +19,7 @@ void merge(int leftstart, int leftend, int rightstart, int rightend){
 	int j = rightstart;
 	int k = 0;
 
-	// merge into temp
+	// merge into B
 	while (i <= leftend && j <= rightend) {
 			if (A[i] <= A[j]) {
 					B[k++] = A[i++];
@@ -37,7 +37,6 @@ void merge(int leftstart, int leftend, int rightstart, int rightend){
 
 /* this function will be called by parallel_mergesort() as its base case. */
 void my_mergesort(int left, int right){
-
 	if (left >= right) return;
 
 	int mid = left + (right-left)/2;
@@ -83,10 +82,13 @@ void * parallel_mergesort(void *arg){
 
 /* we build the argument for the parallel_mergesort function. */
 struct argument * buildArgs(int left, int right, int level){
+
 	struct argument *arg = (struct argument *) malloc(sizeof(struct argument));
+	
 	arg->left = left;
 	arg->right = right;
 	arg->level = level;
+
 	return arg;
 }
 
